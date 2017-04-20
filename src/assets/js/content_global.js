@@ -106,4 +106,36 @@ import * as animeUtils from "./animeUtils";
                 shareBarRemover();
             }
         });
+    
+    /******************************************************************************************************************/
+    // Custom CSS Loader
+    // CCL = custom css loader
+
+    // Load our html template
+    var ccl_template = require("../templates/custom_css_loader.html");
+
+    // Attach the previewer style tag. All the temporary
+    // previewing will go here.
+    $("head").append(`<style id="_ccl_preview"></style>`);
+    $("body")
+        .append(`<div id="_ccl_open"></div>`)
+        .append(ccl_template);
+
+    $("#_ccl_open").on("click", function () {
+        $(this).hide();
+        $("#_ccl_widget").css({display: "block"}).addClass("ccl_slideLeft").removeClass("ccl_slideRight");
+    });
+
+    $("#_ccl_close").on("click", function () {
+        $("#_ccl_open").show();
+        $("#_ccl_widget").addClass("ccl_slideRight").removeClass("ccl_slideLeft");
+    });
+    
+    $("#_ccl_preview_custom_css").on("click", function () {
+        var customCssText = $("#_ccl_custom_css_text").val();
+        console.log(customCssText);
+
+        $("#_ccl_preview").text(customCssText);
+    });
+    
 })();

@@ -41,6 +41,17 @@ gulp.task("webpack", function (callback) {
     // run webpack
     // noinspection JSUnresolvedFunction
     webpack({
+        module: {
+            rules: [{
+                test: /\.html$/,
+                use: [ {
+                    loader: "html-loader",
+                    options: {
+                        minimize: true
+                    }
+                }]
+            }]
+        },
         plugins: [
             new webpack.ProvidePlugin({
                 jQuery: path.resolve(__dirname, "src/assets/lib/jquery-3.2.0.min.js"),
@@ -143,7 +154,7 @@ gulp.task("linter", function (done) {
         // if its not a clean exit we call the done
         // callback with the error code.
         if (exitCode !== 0) {
-            done(exitCode); 
+            done(exitCode);
             return;
         }
         // If no error, we move on with our lives.

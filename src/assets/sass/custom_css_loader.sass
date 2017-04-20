@@ -1,0 +1,91 @@
+//CCL = Custom CSS Loader
+
+// This is the button that opens the main
+// CCL window
+$ccl_primary: #16151c
+#_ccl_open
+    height: 30px
+    width: 30px
+    border-radius: 50%
+
+    background: #eeeeee
+
+    position: fixed
+    bottom: 10px
+    right: 10px
+
+    cursor: pointer
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.2)
+
+@keyframes ccl_slideLeft
+    from
+        margin-right: -250px
+    to
+        margin-right: 0
+
+@keyframes ccl_slideRight
+    from
+        margin-right: 0
+    to
+        margin-right: -250px
+
+.ccl_slideLeft
+    animation: ccl_slideLeft
+    animation-fill-mode: forwards
+    animation-duration: 0.5s
+
+.ccl_slideRight
+    animation: ccl_slideRight
+    animation-fill-mode: forwards
+    animation-duration: 0.5s
+
+#_ccl_widget
+    padding: 10px
+    height: 100vh
+    width: 250px
+    background-color: $ccl_primary
+    color: #9a9a9a
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+
+    z-index: 99
+    position: fixed
+    top: 0
+    right: 0
+
+    button
+        -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.4)
+        -moz-box-shadow: 0 2px 5px rgba(0,0,0,.4)
+        box-shadow: 0 2px 5px rgba(0,0,0,.4)
+        color: #B4B4B4
+        background-color: #51286A
+
+        padding: 5px
+        border: 1px solid #51286A
+        border-radius: 3px
+
+        &:hover
+            color: #dadada
+            background-color: #6d368f
+            border: 1px solid #6d368f
+
+    .top-bar
+        $topBarPadding: 5px
+        display: block
+        border-bottom: 1px solid lighten($ccl_primary, 20%)
+        margin-bottom: 10px
+        padding-top: $topBarPadding
+        padding-bottom: $topBarPadding
+
+        .close-button
+            margin-top: -$topBarPadding
+            display: inline-block
+            float: right
+            font-size: 20px
+            cursor: pointer
+
+    .paste-css
+        textarea
+            background: lighten($ccl_primary, 5%)
+            height: 300px
+            width: 100%
+            color: #F92672
